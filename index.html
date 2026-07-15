@@ -671,13 +671,67 @@
   .refl-date{font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:6px;text-transform:capitalize;}
   .refl-line{font-size:12.5px;padding:3px 0;line-height:1.5;}
   @media (max-width:720px){
-    .app{flex-direction:column;}
-    .sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:12px;border-right:none;border-bottom:1px solid var(--border);}
-    .brand{display:none;}
-    .sidebar-footer{display:none;}
-    .nav-btn{width:auto;white-space:nowrap;}
-    .nav-btn.active::before{display:none;}
-    .main{padding:20px;}
+    html{ scroll-padding-bottom:80px; }
+    .app{ flex-direction:column; }
+    .sidebar{
+      position:fixed;
+      top:auto;
+      bottom:0;
+      left:0;
+      right:0;
+      width:100%;
+      max-height:none;
+      flex-direction:row;
+      align-items:center;
+      overflow-x:auto;
+      overflow-y:visible;
+      -webkit-overflow-scrolling:touch;
+      padding:8px 10px;
+      gap:6px;
+      border-right:none;
+      border-top:1px solid var(--border);
+      box-shadow:0 -6px 20px rgba(23,23,50,0.08);
+      z-index:500;
+    }
+    .sidebar::-webkit-scrollbar{ display:none; }
+    .brand{ display:none; }
+    .nav-btn{
+      width:auto;
+      flex-shrink:0;
+      white-space:nowrap;
+      padding:10px 14px;
+      font-size:12.5px;
+      min-height:40px;
+    }
+    .nav-btn.active::before{ display:none; }
+    .sidebar-footer{
+      display:flex;
+      flex-shrink:0;
+      align-items:center;
+      gap:6px;
+      margin-top:0;
+      margin-left:4px;
+      padding:0 0 0 10px;
+      border-top:none;
+      border-left:1px solid var(--border);
+    }
+    .sidebar-footer-text{ display:none; }
+    .backup-row{ margin-top:0; }
+    .backup-btn{ white-space:nowrap; padding:9px 11px; min-height:40px; }
+    .main{ padding:16px 16px 96px 16px; margin:0; max-width:100%; }
+    .topbar{ flex-direction:column; align-items:stretch; gap:12px; }
+    .greeting h1{ font-size:21px; }
+    .stats-row{ flex-wrap:wrap; }
+    .stat-chip{ flex:1 1 28%; min-width:0; padding:9px 10px; }
+    .level-card{ padding:16px 18px; }
+    .focus-time{ font-size:40px; }
+    .lock-box{ padding:26px 22px; }
+    .add-row > *{ flex:1 1 100%; min-width:0; }
+    .checkbox{ width:22px; height:22px; }
+    .dot{ width:26px; height:26px; }
+    .icon-btn{ font-size:16px; padding:8px; }
+    .cal-cell{ font-size:11px; }
+    .badges-grid{ grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
   }
 </style>
 </head>
@@ -708,7 +762,7 @@
     <button class="nav-btn" data-tab="calendar">📅 Календарь</button>
     <button class="nav-btn" data-tab="badges">🏆 Награды</button>
     <div class="sidebar-footer">
-      Данные сохраняются автоматически в этом браузере
+      <span class="sidebar-footer-text">Данные сохраняются автоматически в этом браузере</span>
       <div class="backup-row">
         <button class="backup-btn" id="exportBtn">⬇ Экспорт</button>
         <button class="backup-btn" id="importBtn">⬆ Импорт</button>
