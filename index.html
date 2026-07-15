@@ -188,7 +188,23 @@
   .main{
     flex:1;
     padding:32px 40px;
-    max-width:960px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .overview-grid{
+    display:grid;
+    grid-template-columns:1.7fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+  .overview-side .card{position:sticky; top:32px;}
+  .cal-grid-mini{ gap:4px; }
+  .cal-grid-mini .cal-cell{ border-radius:7px; font-size:10.5px; gap:1px; }
+  .cal-grid-mini .cal-dow{ font-size:9px; padding-bottom:2px; }
+  .cal-grid-mini .cal-dot{ width:3px; height:3px; }
+  @media (max-width:860px){
+    .overview-grid{ grid-template-columns:1fr; }
+    .overview-side .card{position:static;}
   }
   .topbar{
     display:flex;
@@ -727,25 +743,31 @@
 
     <!-- OVERVIEW -->
     <div class="section active" id="tab-overview">
-      <div class="card">
-        <h2>Сегодняшние привычки</h2>
-        <div class="list" id="overviewHabits"></div>
-      </div>
-      <div class="card">
-        <h2>Ближайшие задачи</h2>
-        <div class="list" id="overviewTasks"></div>
-      </div>
-      <div class="card">
-        <h2>Прогресс по целям</h2>
-        <div id="overviewGoals"></div>
-      </div>
-      <div class="card">
-        <h2>📅 Календарь этого месяца</h2>
-        <div class="cal-grid" id="overviewCalGrid"></div>
-      </div>
-      <div class="card">
-        <h2>🇬🇧 Слово дня</h2>
-        <div id="wordOfDay"></div>
+      <div class="overview-grid">
+        <div class="overview-main">
+          <div class="card">
+            <h2>Сегодняшние привычки</h2>
+            <div class="list" id="overviewHabits"></div>
+          </div>
+          <div class="card">
+            <h2>Ближайшие задачи</h2>
+            <div class="list" id="overviewTasks"></div>
+          </div>
+          <div class="card">
+            <h2>Прогресс по целям</h2>
+            <div id="overviewGoals"></div>
+          </div>
+        </div>
+        <div class="overview-side">
+          <div class="card">
+            <h2>📅 Этот месяц</h2>
+            <div class="cal-grid cal-grid-mini" id="overviewCalGrid"></div>
+          </div>
+          <div class="card">
+            <h2>🇬🇧 Слово дня</h2>
+            <div id="wordOfDay"></div>
+          </div>
+        </div>
       </div>
     </div>
 
